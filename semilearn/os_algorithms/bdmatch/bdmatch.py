@@ -6,6 +6,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from timm.models.layers import DropPath
 import math
+from torch.nn.parallel import DistributedDataParallel
 
 from semilearn.core.algorithmbase import OSAlgorithmBase
 from semilearn.core.utils import OS_ALGORITHMS
@@ -226,11 +227,14 @@ class BDMatch(OSAlgorithmBase):
                 y_ulb_r = torch.cat(
                     [torch.empty(x_ulb_w[:num_lb].size(0)).fill_(i).long() for i in range(4)], dim=0).to(x_ulb_r.device)
                 self.bn_controller.freeze_bn(self.model)
-                logits_rot = self.model.rot_forward(x_ulb_r)
+                if  isinstance(self.model,DistributedDataParallel):
+                    logits_rot = self.model.module.rot_forward(x_ulb_r)
+                else:
+                    logits_rot = self.model.rot_forward(x_ulb_r)
                 self.bn_controller.unfreeze_bn(self.model)
                 rot_loss = F.cross_entropy(logits_rot, y_ulb_r, reduction='mean')
             else:
-                rot_loss = torch.tensor(0).to(x_ulb_r.device)
+                rot_loss = torch.tensor(0).to(sup_loss.device)
             
             if self.epoch > 0:
                 total_loss = sup_loss + self.lambda_u * unsup_loss + st_sup_loss + self.lambda_u * st_unsup_loss + rot_loss
