@@ -244,7 +244,7 @@ def main_worker(gpu, ngpus_per_node, args):
 
     _net_builder = get_net_builder(args.net, args.net_from_name)
     # optimizer, scheduler, datasets, dataloaders with be set in algorithms
-    model = get_os_algorithm(args, _net_builder, tb_log, logger)
+    model = get_os_algorithm(args, _net_builder, tb_log, logger) # 'model' is a BDmatch class
     logger.info(f'Number of Trainable Params: {count_parameters(model.model)}')
     
     # SET Devices for (Distributed) DataParallel
