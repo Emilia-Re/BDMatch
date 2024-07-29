@@ -310,7 +310,7 @@ class AlgorithmBase:
                 
             self.call_hook("after_train_epoch")
             
-        self.call_hook("after_run")
+        self.call_hook("after_run")#从这里进入evulate 部分的代码
 
 
     def evaluate(self, eval_dest='eval', out_key='logits', return_logits=False):
@@ -622,6 +622,7 @@ class OSAlgorithmBase(AlgorithmBase):
         if eval_dest == 'eval':
             return self.evaluate_eval(out_key, return_logits)
         else: # test
+            #eval_dict中包含有计算auroc代码
             eval_dict, OOD_targets, ID_scores, seen_OOD_targets, seen_ID_scores, \
                 cls_targets, cls_pred, seen_cls_targets, seen_cls_pred = self.evaluate_test(out_key, return_logits)
             
