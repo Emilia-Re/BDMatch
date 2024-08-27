@@ -82,8 +82,9 @@ if __name__=='__main__':
         model.warmup()
 
     logger.info("Evaluating!")
-    model.call_hook("after_run")  # 从这里进入evulate 部分的代码
+    # model.call_hook('OSEvaluationHook')
 
+    model.hooks_dict['OSEvaluationHook'].evaluate(model)# 从这里进入evulate 部分的代码,实际运行的hook有OSEvaluationHook
     # print validation (and test results)
     for key, item in model.results_dict.items():
         logger.info(f"Model result - {key} : {item}")
