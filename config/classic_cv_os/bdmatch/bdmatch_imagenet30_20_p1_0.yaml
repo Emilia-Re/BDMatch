@@ -1,16 +1,24 @@
 os_algorithm: bdmatch
-save_dir: ./saved_models/classic_cv_os
+save_dir: ./saved_models/imagenet30_exp
 save_name: bdmatch_imagenet30_20_p1_0
 resume: True
-load_path: ./saved_models/classic_cv_os/bdmatch_imagenet30_20_p1_0/latest_model.pth
+load_path: ./saved_models/imagenet30_exp/bdmatch_imagenet30_20_p1_0/latest_model.pth
 overwrite: True
 use_tensorboard: True
 use_wandb: False
+
+#epoch: 1
+#num_train_iter: 1
+#batch_size: 1
+#num_eval_iter: 1
+#num_log_iter: 1
 epoch: 100
 num_train_iter: 102400
+batch_size: 32
 num_eval_iter: 1024
 num_log_iter: 256
-batch_size: 32
+
+
 eval_batch_size: 128
 hard_label: True
 T: 0.5

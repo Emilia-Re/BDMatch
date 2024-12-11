@@ -169,7 +169,7 @@ def main(args):
             raise Exception('Resume of training requires --load_path in the args')
         if os.path.abspath(save_path) == os.path.abspath(args.load_path) and not args.overwrite:
             raise Exception('Saving & Loading paths are same. \
-                            If you want over-write, give --overwrite in the argument.')
+                            If you want over-write, give --over[write in the argument.')
 
     if args.seed is not None:
         warnings.warn('You have chosen to seed training. '
@@ -228,8 +228,8 @@ def main_worker(gpu, ngpus_per_node, args):
         # set distributed group:
         dist.init_process_group(backend=args.dist_backend, init_method=args.dist_url,
                                 world_size=args.world_size, rank=args.rank)
-    else:
-        args.gpu = 0
+    # else:
+    #     args.gpu = 0
 
     # SET save_path and logger
     save_path = os.path.join(args.save_dir, args.save_name)

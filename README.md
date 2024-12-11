@@ -53,6 +53,10 @@ BDMatch
 
 For example, to train BDMatch on CIFAR-100-80-4 data set:
 
+```
+D:\DeepLearningCode\BDMatch=/root/nas-public-linkdata/BDMatch
+```
+
 ```python
 # CIFAR100, seen/unseen split of 80/20, 4 labels per seen class (CIFAR-80-4), seed = 0  
 python train.py --c config/classic_cv_os/bdmatch/bdmatch_cifar100_80_4_0.yaml
@@ -62,7 +66,7 @@ For another example, to train BDMatch on ImageNet-30-20-p1 data set:
 
 ```python
 # ImageNet-30, seen/unseen split of 20/10, 1% labeled data (ImageNet-30-20-p1), seed = 1  
-python train.py --c config/classic_cv_os/bdmatch/bdmatch_imagenet30_20_p1_1.yaml
+python train.py --c config/classic_cv_os/bdmatch/bdmatch_imagenet30_20_p1_0.yaml
 ```
 
 Training BDMatch on other data sets can be specified by corresponding config files. We provide config files for all data sets used in the paper. Please check the folder `config/classic_cv_os/bdmatch/`.

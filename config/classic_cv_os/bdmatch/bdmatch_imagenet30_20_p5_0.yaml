@@ -1,8 +1,8 @@
 os_algorithm: bdmatch
-save_dir: ./saved_models/classic_cv_os
+save_dir: ./saved_models/imagenet30_exp
 save_name: bdmatch_imagenet30_20_p5_0
 resume: True
-load_path: ./saved_models/classic_cv_os/bdmatch_imagenet30_20_p5_0/latest_model.pth
+load_path: ./saved_models/imagenet30_exp/bdmatch_imagenet30_20_p5_0/latest_model.pth
 overwrite: True
 use_tensorboard: True
 use_wandb: False
@@ -24,7 +24,7 @@ lr: 0.03
 momentum: 0.9
 weight_decay: 0.0003
 layer_decay: 1.0
-amp: False
+amp: True
 clip: 0.0
 use_cat: True
 net: resnet18
@@ -44,9 +44,9 @@ rank: 0
 multiprocessing_distributed: False
 dist_url: tcp://127.0.0.1:10005
 dist_backend: nccl
-gpu: None
 p_cutoff_pos: 0.99
 p_cutoff_neg: 0.01
 ema_p: 0.999
 tau: 0.5
 use_rot: True
+gpu: 2
