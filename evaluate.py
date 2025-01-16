@@ -17,13 +17,12 @@ from semilearn.os_algorithms import get_os_algorithm, name2osalg
 from semilearn.core.utils import get_net_builder, get_logger, get_port, send_model_cuda, count_parameters, over_write_args_from_file, TBLog
 from train import get_config
 
-if __name__=='__main__':
 
+
+def main(args):
 
     #read config file
-    args = get_config()
-    args.c=r'config/classic_cv_os/bdmatch/bdmatch_cifar10_6_4_0_test.yaml'
-    over_write_args_from_file(args, args.c)
+
     args.distributed = args.world_size > 1 or args.multiprocessing_distributed
     ngpus_per_node = torch.cuda.device_count()  # number of gpus of each node
     '''
@@ -93,5 +92,12 @@ if __name__=='__main__':
         model.finetune()
 
     # logging.warning(f"GPU {args.rank} training is FINISHED")
+
+
+if __name__=='__main__':
+    args = get_config()
+    args.c = r'config/classic_cv_os/bdmatch/bdmatch_cifar10_6_4_0_test.yaml'
+    over_write_args_from_file(args, args.c)
+    main(args)
 
 

@@ -1,8 +1,8 @@
 os_algorithm: bdmatch
 save_dir: ./saved_models/classic_cv_os
-save_name: bdmatch_imagenet30_20_p5_2
+save_name: bdmatch_imagenet30_20_p5_1
 resume: True
-load_path: ./saved_models/classic_cv_os/bdmatch_imagenet30_20_p5_2/latest_model.pth
+load_path: ./saved_models/classic_cv_os/bdmatch_imagenet30_20_p5_1/latest_model.pth
 overwrite: True
 use_tensorboard: True
 use_wandb: False
@@ -38,13 +38,13 @@ labeled_percent: p5
 ulb_purified: False
 OOD_threshold: 0.5
 num_workers: 1
-seed: 2
+seed: 1
 world_size: 1
 rank: 0
 multiprocessing_distributed: False
 dist_url: tcp://127.0.0.1:10005
 dist_backend: nccl
-gpu: 2
+gpu: None
 p_cutoff_pos: 0.99
 p_cutoff_neg: 0.01
 ema_p: 0.999

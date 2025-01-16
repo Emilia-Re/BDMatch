@@ -33,7 +33,7 @@ train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True, num_worke
 test_loader = DataLoader(test_dataset, batch_size=128, shuffle=False, num_workers=4)
 
 # Load the ViT model from Hugging Face
-path_to_model= '.' #'google/vit-base-patch16-224-in21k'
+path_to_model= ''  #'google/vit-base-patch16-224-in21k'
 model = ViTForImageClassification.from_pretrained(path_to_model, num_labels=10,ignore_mismatched_sizes=True)
 
 # Adjust the classifier for CIFAR-10

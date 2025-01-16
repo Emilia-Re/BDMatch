@@ -45,7 +45,7 @@ rank: 0
 multiprocessing_distributed: False
 dist_url: tcp://127.0.0.1:10005
 dist_backend: nccl
-gpu: None
+gpu: 0
 p_cutoff_pos: 0.99
 p_cutoff_neg: 0.01
 ema_p: 0.999
